@@ -1,0 +1,30 @@
+services:
+  postgres:
+    container_name: 'Postgres_DB'
+    image: 'postgres'
+    environment:
+      POSTGRES_DB: campus_overflow
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_HOST_AUTH_METHOD: trust
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - 'postgres:/var/lib/postgresql/data'
+    ports:
+      - 5432
+    networks:
+      - spring-demo
+    restart: unless-stopped
+  mail-dev:
+    container_name: 'Mail_Dev'
+    image: maildev/maildev
+    ports:
+      - 1080:1080
+      - 1025:1025
+
+networks:
+  spring-demo:
+    driver: bridge
+volumes:
+  postgres:
+      driver: local
