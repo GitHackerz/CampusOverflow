@@ -2,6 +2,7 @@ package com.example.campusoverflow.auth;
 
 import com.example.campusoverflow.email.EmailService;
 import com.example.campusoverflow.email.EmailTemplateName;
+import com.example.campusoverflow.exceptions.UserAlreadyExistsException;
 import com.example.campusoverflow.security.JwtService;
 import com.example.campusoverflow.user.*;
 import jakarta.mail.MessagingException;
@@ -33,6 +34,12 @@ public class AuthenticationService {
     private String activationUrl;
 
     public void register(RegistrationRequest request) throws MessagingException {
+        if (userRepository.existsByUsername(request.getUsername())) {
+            throw new UserAlreadyExistsException("Username already exists");
+        }
+        if (userRepository.existsByEmail(request.getEmail())) {
+            throw new UserAlreadyExistsException("Email already exists");
+        }
         var user = User.builder()
                 .username(request.getUsername())
                 .password(passwordEncoder.encode(request.getPassword()))
@@ -61,7 +68,7 @@ public class AuthenticationService {
     }
 
     private String generateAndSaveActivationToken(User user) {
-        String generatedToken = generateActivationToken(6);
+        String generatedToken = generateActivationToken();
         var token = Token.builder()
                 .token(generatedToken)
                 .user(user)
@@ -73,11 +80,11 @@ public class AuthenticationService {
         return generatedToken;
     }
 
-    private String generateActivationToken(int length) {
+    private String generateActivationToken() {
         String chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
         StringBuilder token = new StringBuilder();
         SecureRandom random = new SecureRandom();
-        for (int i = 0; i < length; i++) {
+        for (int i = 0; i < 6; i++) {
             token.append(chars.charAt(random.nextInt(chars.length())));
         }
         return token.toString();

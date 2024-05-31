@@ -12,6 +12,7 @@ public enum BusinessErrorCode {
     ACCOUNT_LOCKED(302, HttpStatus.LOCKED, "Account locked"),
     ACCOUNT_DISABLED(303, HttpStatus.FORBIDDEN, "Account disabled"),
     BAD_CREDENTIALS(304, HttpStatus.UNAUTHORIZED, "Bad credentials"),
+    ALREADY_EXISTS(305, HttpStatus.CONFLICT, "Already exists"),
     ;
 
 
@@ -21,7 +22,7 @@ public enum BusinessErrorCode {
 
     BusinessErrorCode(int code, HttpStatus httpStatus, String description) {
         this.code = code;
-        this.description = description;
         this.httpStatus = httpStatus;
+        this.description = description;
     }
 }
