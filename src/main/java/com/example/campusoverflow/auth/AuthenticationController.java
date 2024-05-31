@@ -1,10 +1,12 @@
 package com.example.campusoverflow.auth;
 
+import com.example.campusoverflow.auth.dto.LoginRequest;
+import com.example.campusoverflow.auth.dto.LoginResponse;
+import com.example.campusoverflow.auth.dto.RegistrationRequest;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.mail.MessagingException;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springdoc.core.service.GenericResponseService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

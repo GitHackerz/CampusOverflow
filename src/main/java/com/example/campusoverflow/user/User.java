@@ -1,5 +1,6 @@
 package com.example.campusoverflow.user;
 
+import com.example.campusoverflow.user.enums.Role;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

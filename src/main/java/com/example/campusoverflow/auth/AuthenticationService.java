@@ -1,10 +1,14 @@
 package com.example.campusoverflow.auth;
 
+import com.example.campusoverflow.auth.dto.LoginRequest;
+import com.example.campusoverflow.auth.dto.LoginResponse;
+import com.example.campusoverflow.auth.dto.RegistrationRequest;
 import com.example.campusoverflow.email.EmailService;
 import com.example.campusoverflow.email.EmailTemplateName;
 import com.example.campusoverflow.exceptions.UserAlreadyExistsException;
 import com.example.campusoverflow.security.JwtService;
 import com.example.campusoverflow.user.*;
+import com.example.campusoverflow.user.enums.Role;
 import jakarta.mail.MessagingException;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;

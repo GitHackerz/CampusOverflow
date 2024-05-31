@@ -1,4 +1,4 @@
-package com.example.campusoverflow.auth;
+package com.example.campusoverflow.auth.dto;
 
 import jakarta.validation.constraints.*;
 import lombok.Builder;

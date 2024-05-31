@@ -1,4 +1,4 @@
-package com.example.campusoverflow.auth;
+package com.example.campusoverflow.auth.dto;
 
 import lombok.Builder;
 import lombok.Getter;
