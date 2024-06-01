@@ -1,10 +1,7 @@
 package com.example.campusoverflow.common;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 import lombok.experimental.SuperBuilder;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -16,6 +13,7 @@ import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@ToString
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor

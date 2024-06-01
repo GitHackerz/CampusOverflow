@@ -26,16 +26,6 @@ public class TagController {
         return service.findById(id);
     }
 
-    @DeleteMapping("{id}")
-    public void deleteById(@PathVariable Long id) {
-        service.deleteById(id);
-    }
-
-    @PutMapping
-    public Tag update(@RequestBody @Valid TagRequestUpdate tag) {
-        return service.update(tag);
-    }
-
     @GetMapping("name/{name}")
     public Tag findByName(@PathVariable String name) {
         return service.findByName(name);
@@ -49,6 +39,16 @@ public class TagController {
     @PostMapping
     public Tag save(@RequestBody @Valid TagRequestNew tag) {
         return service.save(tag);
+    }
+
+    @PutMapping
+    public Tag update(@RequestBody @Valid TagRequestUpdate tag) {
+        return service.update(tag);
+    }
+
+    @DeleteMapping("{id}")
+    public void deleteById(@PathVariable Long id) {
+        service.deleteById(id);
     }
 
 

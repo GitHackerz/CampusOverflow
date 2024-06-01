@@ -12,9 +12,10 @@ import lombok.*;
 @ToString
 public class TagRequestUpdate {
 
-    @NotNull(message = "Id cannot be null")
+    @NotNull(message = "Id is required")
     private Long id;
-    @NotNull(message = "Name cannot be null")
-    @NotEmpty(message = "Name cannot be blank")
+
+    @NotNull(message = "Name is required")
+    @NotEmpty(message = "Name is required")
     private String name;
 }
