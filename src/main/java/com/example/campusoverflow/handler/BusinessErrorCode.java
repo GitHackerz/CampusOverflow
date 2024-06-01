@@ -13,6 +13,8 @@ public enum BusinessErrorCode {
     ACCOUNT_DISABLED(303, HttpStatus.FORBIDDEN, "Account disabled"),
     BAD_CREDENTIALS(304, HttpStatus.UNAUTHORIZED, "Bad credentials"),
     ALREADY_EXISTS(305, HttpStatus.CONFLICT, "Already exists"),
+    NOT_FOUND(306, HttpStatus.NOT_FOUND, "Not found"),
+    UNAUTHORIZED(307, HttpStatus.UNAUTHORIZED, "Unauthorized access"),
     ;
 
 

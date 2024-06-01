@@ -5,7 +5,7 @@ import com.example.campusoverflow.auth.dto.LoginResponse;
 import com.example.campusoverflow.auth.dto.RegistrationRequest;
 import com.example.campusoverflow.email.EmailService;
 import com.example.campusoverflow.email.EmailTemplateName;
-import com.example.campusoverflow.exceptions.UserAlreadyExistsException;
+import com.example.campusoverflow.exceptions.AlreadyExistsException;
 import com.example.campusoverflow.security.JwtService;
 import com.example.campusoverflow.user.*;
 import com.example.campusoverflow.user.enums.Role;
@@ -39,10 +39,10 @@ public class AuthenticationService {
 
     public void register(RegistrationRequest request) throws MessagingException {
         if (userRepository.existsByUsername(request.getUsername())) {
-            throw new UserAlreadyExistsException("Username already exists");
+            throw new AlreadyExistsException("Username already exists");
         }
         if (userRepository.existsByEmail(request.getEmail())) {
-            throw new UserAlreadyExistsException("Email already exists");
+            throw new AlreadyExistsException("Email already exists");
         }
         var user = User.builder()
                 .username(request.getUsername())
@@ -50,9 +50,10 @@ public class AuthenticationService {
                 .role(Role.USER)
                 .email(request.getEmail())
                 .birthdate(request.getBirthdate())
-                .name(request.getUsername())
+                .name(request.getName())
                 .enabled(false)
                 .accountLocked(false)
+                .createdBy("System")
                 .build();
 
         userRepository.save(user);

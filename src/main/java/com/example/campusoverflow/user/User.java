@@ -32,7 +32,7 @@ public class User implements UserDetails, Principal {
 
     @Id
     @GeneratedValue
-    private Integer id;
+    private Long id;
 
     private String name;
 
@@ -59,6 +59,9 @@ public class User implements UserDetails, Principal {
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime updatedAt;
+
+    @Column(nullable = false)
+    private String createdBy;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

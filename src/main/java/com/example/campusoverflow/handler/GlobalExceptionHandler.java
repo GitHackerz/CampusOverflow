@@ -1,6 +1,8 @@
 package com.example.campusoverflow.handler;
 
-import com.example.campusoverflow.exceptions.UserAlreadyExistsException;
+import com.example.campusoverflow.exceptions.NotFoundException;
+import com.example.campusoverflow.exceptions.UnAuthorizedException;
+import com.example.campusoverflow.exceptions.AlreadyExistsException;
 import jakarta.mail.MessagingException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -14,6 +16,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static com.example.campusoverflow.handler.BusinessErrorCode.*;
+import static com.example.campusoverflow.handler.BusinessErrorCode.NOT_FOUND;
+import static com.example.campusoverflow.handler.BusinessErrorCode.UNAUTHORIZED;
 import static org.springframework.http.HttpStatus.*;
 
 @RestControllerAdvice
@@ -52,8 +56,8 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
-    @ExceptionHandler(UserAlreadyExistsException.class)
-    public ResponseEntity<ExceptionResponse> handleException(UserAlreadyExistsException exp){
+    @ExceptionHandler(AlreadyExistsException.class)
+    public ResponseEntity<ExceptionResponse> handleException(AlreadyExistsException exp){
         return ResponseEntity
                 .status(ALREADY_EXISTS.getHttpStatus())
                 .body(ExceptionResponse.builder()
@@ -75,6 +79,28 @@ public class GlobalExceptionHandler {
                         .build());
     }
 
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ExceptionResponse> handleException(NotFoundException exp){
+        return ResponseEntity
+                .status(NOT_FOUND.getHttpStatus())
+                .body(ExceptionResponse.builder()
+                        .businessErrorCode(NOT_FOUND.getHttpStatus().value())
+                        .businessExceptionDescription(NOT_FOUND.getDescription())
+                        .error(exp.getMessage())
+                        .build());
+    }
+
+    @ExceptionHandler(UnAuthorizedException.class)
+    public ResponseEntity<ExceptionResponse> handleException(UnAuthorizedException exp){
+        return ResponseEntity
+                .status(UNAUTHORIZED.getHttpStatus())
+                .body(ExceptionResponse.builder()
+                        .businessErrorCode(UNAUTHORIZED.getHttpStatus().value())
+                        .businessExceptionDescription(UNAUTHORIZED.getDescription())
+                        .error(exp.getMessage())
+                        .build());
+    }
+
     @ExceptionHandler(MessagingException.class)
     public ResponseEntity<ExceptionResponse> handleException(MessagingException exp){
         return ResponseEntity
@@ -86,7 +112,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ExceptionResponse> handleException(Exception exp){
-        System.err.println(exp.getMessage());
+        exp.printStackTrace();
         return ResponseEntity
                 .status(INTERNAL_SERVER_ERROR)
                 .body(ExceptionResponse.builder()
