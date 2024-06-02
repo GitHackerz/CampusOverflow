@@ -1,4 +1,4 @@
-package com.example.campusoverflow.comment;
+package com.example.campusoverflow.answer;
 
 import com.example.campusoverflow.common.BaseEntity;
 import com.example.campusoverflow.question.Question;
@@ -12,12 +12,12 @@ import lombok.experimental.SuperBuilder;
 
 @Getter
 @Setter
-@ToString
+@ToString(callSuper = true)
 @SuperBuilder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Comment extends BaseEntity {
+public class Answer extends BaseEntity {
 
     @Column(nullable = false)
     private String content;

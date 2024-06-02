@@ -1,4 +1,4 @@
-package com.example.campusoverflow.comment.dto;
+package com.example.campusoverflow.answer.dto;
 
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -10,15 +10,12 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class CommentRequestNewDto {
+public class AnswerRequestUpdateDto {
+
+    @NotNull(message = "Id is required")
+    private Long id;
 
     @NotEmpty(message = "Content is required")
     @NotNull(message = "Content is required")
     private String content;
-
-    @NotNull(message = "User id is required")
-    private Long userId;
-
-    @NotNull(message = "Question id is required")
-    private Long questionId;
 }

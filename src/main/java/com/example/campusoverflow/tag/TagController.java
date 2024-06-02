@@ -4,6 +4,7 @@ import com.example.campusoverflow.tag.dto.TagRequestNew;
 import com.example.campusoverflow.tag.dto.TagRequestUpdate;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -17,33 +18,33 @@ public class TagController {
     private final TagService service;
 
     @GetMapping
-    public List<Tag> findAll() {
-        return service.findAll();
+    public ResponseEntity<List<Tag>> findAll() {
+        return ResponseEntity.ok(service.findAll());
     }
 
     @GetMapping("{id}")
-    public Tag findById(@PathVariable Long id) {
-        return service.findById(id);
+    public ResponseEntity<Tag> findById(@PathVariable Long id) {
+        return ResponseEntity.ok(service.findById(id));
     }
 
     @GetMapping("name/{name}")
-    public Tag findByName(@PathVariable String name) {
-        return service.findByName(name);
+    public ResponseEntity<Tag> findByName(@PathVariable String name) {
+        return ResponseEntity.ok(service.findByName(name));
     }
 
     @GetMapping("name/containing/{name}")
-    public List<Tag> findByNameContaining(@PathVariable String name) {
-        return service.findByNameContaining(name);
+    public ResponseEntity<List<Tag>> findByNameContaining(@PathVariable String name) {
+        return ResponseEntity.ok(service.findByNameContaining(name));
     }
 
     @PostMapping
-    public Tag save(@RequestBody @Valid TagRequestNew tag) {
-        return service.save(tag);
+    public ResponseEntity<Tag> save(@RequestBody @Valid TagRequestNew tag) {
+        return ResponseEntity.ok(service.save(tag));
     }
 
     @PutMapping
-    public Tag update(@RequestBody @Valid TagRequestUpdate tag) {
-        return service.update(tag);
+    public ResponseEntity<Tag> update(@RequestBody @Valid TagRequestUpdate tag) {
+        return ResponseEntity.ok(service.update(tag));
     }
 
     @DeleteMapping("{id}")
