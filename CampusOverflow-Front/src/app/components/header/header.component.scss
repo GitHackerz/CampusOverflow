@@ -1,0 +1,49 @@
+nav{
+  @apply py-4 px-24 inline-flex justify-between items-center w-full text-sm border-b-2;
+}
+
+.left-nav{
+  @apply inline-flex gap-10 items-center;
+}
+
+.logo{
+  @apply text-lg font-normal inline-flex items-center gap-1;
+}
+.logo span{
+  @apply text-blue-950 font-bold;
+}
+.logo img{
+  @apply h-7 w-7;
+}
+
+.nav-items{
+  @apply inline-flex gap-4 items-center;
+}
+
+.nav-items a{
+  @apply text-gray-500 hover:text-gray-900;
+}
+
+.right-nav{
+  @apply inline-flex gap-4 items-center;
+}
+
+.button-outline{
+  @apply border border-blue-600 text-blue-600 px-4 py-2 rounded-md text-xs hover:bg-blue-100;
+}
+
+.button-filled{
+  @apply bg-blue-600 text-white px-4 py-2 rounded-md text-xs hover:bg-blue-700;
+}
+
+.input-container{
+  @apply inline-flex items-center gap-2 border border-gray-500 rounded-md px-2 py-2 text-sm w-80;
+}
+
+.input-icon{
+  @apply text-gray-500;
+}
+
+input {
+  @apply w-full focus:outline-none text-gray-700;
+}
