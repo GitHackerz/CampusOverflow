@@ -1,2 +1,6 @@
-<p>auth-layout works!</p>
-<router-outlet />
+<div class="min-h-screen bg-background">
+  <app-header [hasButtons]="false"></app-header>
+  <div class="flex flex-col items-center justify-center min-h-screen pt-[50px]">
+    <router-outlet/>
+  </div>
+</div>

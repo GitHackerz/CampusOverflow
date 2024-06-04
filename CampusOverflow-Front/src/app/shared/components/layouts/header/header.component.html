@@ -17,7 +17,13 @@
             <mat-icon class="input-icon">search</mat-icon>
             <input type="text" placeholder="Search for questions">
         </div>
-        <button class="button-outline">Log in</button>
-        <button class="button-filled">Sign up</button>
+      @if (hasButtons){
+        @if(isLoggedIn){
+            <button class="button-filled">Ask a question</button>
+        } @else {
+            <a routerLink="/login" class="button-outline">Log in</a>
+            <a routerLink="/register" class="button-filled">Sign up</a>
+        }
+      }
     </div>
 </nav>

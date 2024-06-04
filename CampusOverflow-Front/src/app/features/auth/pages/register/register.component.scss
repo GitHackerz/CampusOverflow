@@ -1,0 +1,59 @@
+section{
+  @apply flex flex-col items-center justify-center gap-4 h-full;
+}
+
+.register-form{
+  @apply flex flex-col gap-4 bg-white py-10 px-14 rounded-lg drop-shadow-xl w-[450px]
+}
+
+.form-group{
+  @apply flex flex-col gap-1;
+}
+
+.form-group label{
+  @apply text-sm text-gray-600 font-semibold;
+}
+
+.form-group input{
+  @apply border-2 border-gray-300 rounded-lg py-1 px-2 text-sm;
+}
+
+.form-group input:focus{
+  @apply border-blue-500;
+}
+
+.form-group input::placeholder{
+  @apply text-gray-400;
+}
+
+.form-group span{
+  @apply text-xs text-gray-500 px-1 text-justify;
+}
+
+.submit-button{
+  @apply bg-blue-500 text-white rounded-lg py-1 px-2;
+}
+
+.register-form button:hover{
+  @apply bg-blue-600;
+}
+
+.register-form h1{
+  @apply text-2xl text-gray-800 font-semibold;
+}
+
+.register-form p{
+  @apply text-xs text-gray-600;
+}
+
+.register-form p a{
+  @apply text-blue-500;
+}
+
+.register-link{
+  @apply text-sm inline-flex items-center gap-1;
+}
+
+.register-link a{
+  @apply text-blue-500;
+}

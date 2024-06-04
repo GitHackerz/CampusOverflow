@@ -1,1 +1,69 @@
-<p>register works!</p>
+<div class="grid grid-cols-2 h-full px-52">
+
+  <div class="flex flex-col justify-center gap-8">
+    <div class="inline-flex items-start gap-4">
+      <img src="/assets/images/logo.svg" alt="CampusOverflow Logo" height="50" width="50"/>
+      <h3>Campus<span class="font-semibold">Overflow</span></h3>
+    </div>
+    <div class="flex flex-col gap-2">
+      <div class="inline-flex items-center gap-2">
+        <i class="fas fa-question-circle text-blue-500 text-2xl"></i>
+        <span>Get unstuck - ask a question!</span>
+      </div>
+      <div class="inline-flex items-center gap-2">
+        <i class="fas fa-search text-blue-500 text-2xl"></i>
+        <span>Save your favorite posts, tags and filters</span>
+      </div>
+      <div class="inline-flex items-center gap-2">
+        <i class="fas fa-check text-blue-500 text-2xl"></i>
+        <span>Answer questions and earn reputation</span>
+      </div>
+    </div>
+  </div>
+  <section>
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()"
+      class="register-form"
+    >
+      <div>
+        <h1>Create your account</h1>
+        <p>By clicking “Sign up”, you agree to our terms of service and acknowledge you have read our privacy
+          policy.</p>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Enter your Email"
+        />
+      </div>
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input
+          type="text"
+          id="username"
+          formControlName="username"
+          placeholder="Enter your Username"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Enter your password"
+        />
+        <span>Must contain 8+ characters, including at least 1 letter and 1 number.</span>
+      </div>
+      <button type="submit" class="submit-button">Sign up</button>
+
+    </form>
+    <div class="register-link">
+      <p>Already have an account? <a routerLink="/login">Login</a></p>
+    </div>
+  </section>
+</div>
