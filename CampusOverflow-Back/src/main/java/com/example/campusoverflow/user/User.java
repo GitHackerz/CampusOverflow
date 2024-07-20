@@ -1,6 +1,11 @@
 package com.example.campusoverflow.user;
 
+import com.example.campusoverflow.question.Question;
+import com.example.campusoverflow.report.Report;
 import com.example.campusoverflow.user.enums.Role;
+import com.example.campusoverflow.vote.Vote;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
@@ -16,6 +21,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
+
+import static jakarta.persistence.FetchType.EAGER;
 
 @Getter
 @Setter
@@ -49,7 +56,7 @@ public class User implements UserDetails, Principal {
     private boolean enabled;
 
     private boolean accountLocked;
-
+    
     @CreatedDate
     @Column(nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -57,9 +64,6 @@ public class User implements UserDetails, Principal {
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime updatedAt;
-
-    @Column(nullable = false)
-    private String createdBy;
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {

@@ -1,1 +1,10 @@
 <p>questions-list works!</p>
+<div>
+  @for (question of questionsResponse.content; track question.id){
+    <p>
+      {{question.content}}
+    </p>
+  } @empty {
+    <p>No questions found</p>
+  }
+</div>

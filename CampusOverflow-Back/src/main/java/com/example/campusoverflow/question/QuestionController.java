@@ -18,7 +18,7 @@ public class QuestionController {
     private final QuestionService service;
 
     @GetMapping
-    public ResponseEntity<PageResponse<Question>> findAll(
+    public ResponseEntity<PageResponse<Question>> findAllQuestions(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size
     ) {
@@ -26,7 +26,7 @@ public class QuestionController {
     }
 
     @GetMapping("user")
-    public ResponseEntity<PageResponse<Question>> findAllByUser(
+    public ResponseEntity<PageResponse<Question>> findAllQuestionsByUser(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             Authentication authentication
@@ -35,12 +35,12 @@ public class QuestionController {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Question> findById(@PathVariable Long id) {
+    public ResponseEntity<Question> findQuestionById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
     @GetMapping("search")
-    public ResponseEntity<PageResponse<Question>> search(
+    public ResponseEntity<PageResponse<Question>> searchQuestions(
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size,
             @RequestParam String query
@@ -49,7 +49,7 @@ public class QuestionController {
     }
 
     @PostMapping
-    public ResponseEntity<Question> save(
+    public ResponseEntity<Question> saveQuestion(
             @RequestBody @Valid QuestionRequest request,
             Authentication authentication
     ) {
@@ -57,12 +57,12 @@ public class QuestionController {
     }
 
     @PutMapping
-    public ResponseEntity<Question> update(@RequestBody Question question) {
+    public ResponseEntity<Question> updateQuestion(@RequestBody Question question) {
         return ResponseEntity.ok(service.update(question));
     }
 
     @DeleteMapping("{id}")
-    public void deleteById(@PathVariable Long id, Authentication authentication) {
+    public void deleteQuestionById(@PathVariable Long id, Authentication authentication) {
         service.deleteById(id, authentication);
     }
 

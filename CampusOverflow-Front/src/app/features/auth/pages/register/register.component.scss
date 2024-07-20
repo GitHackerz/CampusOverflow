@@ -15,7 +15,7 @@ section{
 }
 
 .form-group input{
-  @apply border-2 border-gray-300 rounded-lg py-1 px-2 text-sm;
+  @apply border-2 border-gray-300 rounded-lg p-2 text-xs;
 }
 
 .form-group input:focus{
@@ -39,7 +39,7 @@ section{
 }
 
 .register-form h1{
-  @apply text-2xl text-gray-800 font-semibold;
+  @apply text-3xl text-gray-800 font-bold;
 }
 
 .register-form p{

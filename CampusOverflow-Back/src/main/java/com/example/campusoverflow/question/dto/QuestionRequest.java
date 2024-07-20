@@ -1,6 +1,5 @@
 package com.example.campusoverflow.question.dto;
 
-import com.example.campusoverflow.tag.Tag;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
 import lombok.*;
@@ -25,5 +24,5 @@ public class QuestionRequest {
 
     @NotEmpty(message = "Tags cannot be empty")
     @NotNull(message = "Tags cannot be null")
-    private List<Tag> tags;
+    private List<Long> tags;
 }

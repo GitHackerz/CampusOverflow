@@ -19,15 +19,13 @@ import java.util.List;
 public class Question extends BaseEntity {
 
     private String title;
+
     private String content;
-    @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
-    @JoinTable(
-            name = "question_tag",
-            joinColumns = @JoinColumn(name = "question_id"),
-            inverseJoinColumns = @JoinColumn(name = "tag_id")
-    )
+
+    @ManyToMany(fetch = FetchType.EAGER)
     private List<Tag> tags;
-    @ManyToOne(cascade = CascadeType.PERSIST, fetch = FetchType.EAGER)
+
+    @ManyToOne
     @JoinColumn(nullable = false)
     private User user;
 }

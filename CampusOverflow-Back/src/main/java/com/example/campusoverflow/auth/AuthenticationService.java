@@ -53,7 +53,6 @@ public class AuthenticationService {
                 .name(request.getName())
                 .enabled(false)
                 .accountLocked(false)
-                .createdBy("System")
                 .build();
 
         userRepository.save(user);

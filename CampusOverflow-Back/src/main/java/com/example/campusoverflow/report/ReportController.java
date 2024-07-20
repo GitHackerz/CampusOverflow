@@ -16,33 +16,33 @@ public class ReportController {
     private final ReportService service;
 
     @GetMapping("user/{userId}")
-    public ResponseEntity<Iterable<Report>> findAllByUser(@PathVariable Long userId) {
+    public ResponseEntity<Iterable<Report>> findAllReportsByUser(@PathVariable Long userId) {
         return ResponseEntity.ok(service.findAllByUserId(userId));
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Report> findById(@PathVariable Long id) {
+    public ResponseEntity<Report> findReportById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
     @DeleteMapping("{id}")
-    public ResponseEntity<Void> deleteById(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteReportById(@PathVariable Long id) {
         service.deleteById(id);
         return ResponseEntity.noContent().build();
     }
 
     @PutMapping
-    public ResponseEntity<Report> update(@RequestBody ReportRequestUpdateDto requestUpdateDto) {
+    public ResponseEntity<Report> updateReport(@RequestBody ReportRequestUpdateDto requestUpdateDto) {
         return ResponseEntity.ok(service.update(requestUpdateDto));
     }
 
     @PostMapping
-    public ResponseEntity<Report> save(@RequestBody ReportRequestNewDto report) {
+    public ResponseEntity<Report> saveReport(@RequestBody ReportRequestNewDto report) {
         return ResponseEntity.ok(service.save(report));
     }
 
     @GetMapping("search")
-    public ResponseEntity<Iterable<Report>> search(
+    public ResponseEntity<Iterable<Report>> searchReports(
             @RequestParam String query
     ) {
         return ResponseEntity.ok(service.search(query));

@@ -15,32 +15,32 @@ public class AnswerController {
     private final AnswerService service;
 
     @GetMapping("question/{questionId}")
-    public ResponseEntity<Iterable<Answer>> findAllByQuestionId(@PathVariable Long questionId) {
+    public ResponseEntity<Iterable<Answer>> findAllAnswersByQuestionId(@PathVariable Long questionId) {
         return ResponseEntity.ok(service.findAllByQuestionId(questionId));
     }
 
     @GetMapping("user/{userId}")
-    public ResponseEntity<Iterable<Answer>> findAllByUserId(@PathVariable Long userId) {
+    public ResponseEntity<Iterable<Answer>> findAllAnswersByUserId(@PathVariable Long userId) {
         return ResponseEntity.ok(service.findAllByUserId(userId));
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<Answer> findById(@PathVariable Long id) {
+    public ResponseEntity<Answer> findAnswerById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
 
     @PostMapping
-    public ResponseEntity<Answer> save(@RequestBody @Valid AnswerRequestNewDto answer) {
+    public ResponseEntity<Answer> saveAnswer(@RequestBody @Valid AnswerRequestNewDto answer) {
         return ResponseEntity.ok(service.save(answer));
     }
 
     @PatchMapping
-    public ResponseEntity<Answer> update(@RequestBody @Valid AnswerRequestUpdateDto answer) {
+    public ResponseEntity<Answer> updateAnswer(@RequestBody @Valid AnswerRequestUpdateDto answer) {
         return ResponseEntity.ok(service.update(answer));
     }
 
     @DeleteMapping("{id}")
-    public void deleteById(@PathVariable Long id) {
+    public void deleteAnswerById(@PathVariable Long id) {
         service.deleteById(id);
     }
 }
