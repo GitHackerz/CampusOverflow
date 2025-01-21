@@ -1,7 +1,7 @@
 package com.example.campusoverflow.vote;
 
+import com.example.campusoverflow.tag.TagService;
 import com.example.campusoverflow.vote.dto.VoteRequestNewDto;
-import com.example.campusoverflow.vote.dto.VoteRequestUpdateDto;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -38,5 +38,6 @@ public class VoteController {
     public ResponseEntity<Vote> findVoteById(@PathVariable Long id) {
         return ResponseEntity.ok(service.findById(id));
     }
+
 
 }

@@ -11,3 +11,4 @@ server:
   port: 8000
   servlet:
     context-path: /api/v1/
+  max-http-request-header-size: 16384

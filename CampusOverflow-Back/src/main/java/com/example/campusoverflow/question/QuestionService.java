@@ -25,6 +25,7 @@ public class QuestionService {
     public Question save(QuestionRequest questionRequest, Authentication authentication) {
         Question question = questionMapper.toQuestion(questionRequest);
         question.setUser((User) authentication.getPrincipal());
+
         return repository.save(question);
     }
 
